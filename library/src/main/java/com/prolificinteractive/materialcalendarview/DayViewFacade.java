@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Abstraction layer to help in decorating Day views
  */
-public final class DayViewFacade {
+public class DayViewFacade {
 
     private boolean isDecorated;
 
@@ -29,7 +29,7 @@ public final class DayViewFacade {
      * @param drawable Drawable to draw behind everything
      */
     public void setBackgroundDrawable(@NonNull Drawable drawable) {
-        if(drawable == null) {
+        if (drawable == null) {
             throw new IllegalArgumentException("Cannot be null");
         }
         this.backgroundDrawable = drawable;
@@ -38,13 +38,12 @@ public final class DayViewFacade {
 
     /**
      * Set a custom selection drawable
-     *
      * TODO: define states that can/should be used in StateListDrawables
      *
      * @param drawable the drawable for selection
      */
     public void setSelectionDrawable(@NonNull Drawable drawable) {
-        if(drawable == null) {
+        if (drawable == null) {
             throw new IllegalArgumentException("Cannot be null");
         }
         selectionDrawable = drawable;
@@ -57,7 +56,7 @@ public final class DayViewFacade {
      * @param span text span instance
      */
     public void addSpan(@NonNull Object span) {
-        if(spans != null) {
+        if (spans != null) {
             this.spans.add(new Span(span));
             isDecorated = true;
         }
@@ -65,7 +64,6 @@ public final class DayViewFacade {
 
     /**
      * <p>Set days to be in a disabled state, or re-enabled.</p>
-     *
      * <p>Note, passing true here will <b>not</b> override minimum and maximum dates, if set.
      * This will only re-enable disabled dates.</p>
      *
@@ -86,13 +84,14 @@ public final class DayViewFacade {
 
     /**
      * Apply things set this to other
+     *
      * @param other facade to apply our data to
      */
     void applyTo(DayViewFacade other) {
-        if(selectionDrawable != null) {
+        if (selectionDrawable != null) {
             other.setSelectionDrawable(selectionDrawable);
         }
-        if(backgroundDrawable != null) {
+        if (backgroundDrawable != null) {
             other.setBackgroundDrawable(backgroundDrawable);
         }
         other.spans.addAll(spans);
@@ -118,6 +117,7 @@ public final class DayViewFacade {
 
     /**
      * Are days from this facade disabled
+     *
      * @return true if disabled, false if not re-enabled
      */
     public boolean areDaysDisabled() {
@@ -129,7 +129,7 @@ public final class DayViewFacade {
         final Object span;
 
         public Span(Object span) {
-            this.span  = span;
+            this.span = span;
         }
     }
 }
